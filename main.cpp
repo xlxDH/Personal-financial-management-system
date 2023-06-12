@@ -15,6 +15,16 @@ string local_time(){
 	return ss.str();
 }
 
+void init(){
+	ofstream ofs;
+	ofs.open("data.txt",ios::out);
+	ofs.close();
+	ofs.open("income.txt",ios::out);
+	ofs.close();
+	ofs.open("outcome.txt",ios::out);
+	ofs.close();
+}
+
 int get_sum(char buf[]){
 	int sum = 0;
 	int idx = 0;
@@ -128,7 +138,7 @@ int main()
 	cout << "************个人金融管理系统*************\n**************菜单界面*******************" << endl;
 
 
-    vector<string> menu = {"\t   1. 添加收入", "\t   2. 添加支出", "\t   3. 显示账单", "\t   4. 退出系统"};
+    vector<string> menu = {"\t   1. 添加收入", "\t   2. 添加支出", "\t   3. 显示账单", "\t   4. 退出系统", "\t   5. 清空账单"};
 
         for (string item : menu)
         {
@@ -169,6 +179,10 @@ int main()
                 // 退出
                 exit_flag = true;
                 break;
+            case 5:
+            	// 清空
+            	init();
+            	break;
             default:
                 cout << "\t   无效的选项，请重新输入！" << endl;
                 break;
